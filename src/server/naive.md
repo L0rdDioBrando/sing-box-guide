@@ -1,4 +1,3 @@
-## Установка NaiveProxy на сервер:
 ### 1. Ставим Go:
 ```bash
 export GO_VER=$(curl --silent "https://go.dev/VERSION?m=text" | head -n 1)
