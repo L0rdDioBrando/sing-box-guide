@@ -4,7 +4,10 @@ on:
   push:
     branches: [ main ]
     paths:
-      - '.forgejo/workflows/docs.yml'
+      - 'src/**'
+      - '.forgejo/workflows/docs.yaml'
+      - 'book.toml'
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -19,4 +22,5 @@ jobs:
           mdbook-version: 'latest'
 
       - name: Build the book
-        run: mdbook build /home/bopsifox/sing-box-guide
+        working-directory: .
+        run: mdbook build
