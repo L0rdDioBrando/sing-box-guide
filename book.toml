@@ -9,8 +9,8 @@ build-dir = "book"
 create-missing = false
 
 [output.html]
-default-theme = "navy"
-preferred-dark-theme = "navy"
+default-theme = "ayu"
+preferred-dark-theme = "ayu"
 git-repository-url = "https://git.iusenixosbtw.duckdns.org/bopsi/sing-box-guide"
 edit-url-template = "https://git.iusenixosbtw.duckdns.org/bopsi/sing-box-guide/edit/main/{path}"
 
