@@ -1,5 +1,4 @@
-# Установка NaiveProxy на клиент:
-1. Скачиваем последний релиз:
+### Скачиваем последний релиз:
 ```bash
 NAIVE_VER=$(curl -sL https://api.github.com/repos/klzgrad/naiveproxy/releases/latest | sed -n 's/.*"tag_name": "\([^"]*\)".*/\1/p' | head -n 1)
 curl -sL https://github.com/klzgrad/naiveproxy/releases/download/${NAIVE_VER}/naiveproxy-${NAIVE_VER}-linux-x64.tar.xz | tar -xJ
@@ -7,7 +6,7 @@ cd naiveproxy-${NAIVE_VER}-linux-x64
 nano config.json
 ```
 
-2. Редактируем:
+### Редактируем:
 ```jsonc
 {
   "listen": [
@@ -20,7 +19,7 @@ nano config.json
 }
 ```
 
-3. Запускаем:
+### Запускаем:
 ```bash
 ./naive
 ```

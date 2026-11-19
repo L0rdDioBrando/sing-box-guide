@@ -1,11 +1,10 @@
-# Установка sing-box на клиент:
-1. Устанавливаем  и редактируем sing-box:
+### Устанавливаем  и редактируем sing-box:
 ```bash
 curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 sudoedit config.jsonc
 ```
 
-2. Вставляем конфиг:
+### Вставляем конфиг:
 ```jsonc
 {
   "$schema": "https://sing-box.sagernet.org/schema.json",
@@ -253,7 +252,7 @@ sudoedit config.jsonc
 - username, password, uuid, short_id на теже самые что и на сервере.
 - example.com на ваш домен.
 
-3. Запускаем:
+### Запускаем:
 ```bash
 sudo sing-box run -c ./config.jsonc
 ```
