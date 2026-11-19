@@ -1,9 +1,9 @@
-### Устанавливаем Hy2 (ссылку можно заменить под вашу платформу):
+### 1. Устанавливаем Hy2 (ссылку можно заменить под вашу платформу):
 ```bash
 wget https://download.hysteria.network/app/latest/hysteria-linux-amd64
 ```
 
-### Создайте config.yaml и вставте:
+### 2. Создайте config.yaml и вставте:
 ```yaml
 server: IP:1234 # Замените IP на IP сервера
 
@@ -32,7 +32,7 @@ http:
 lazy: true
 ```
 
-### Запустите:
+### 3. Запустите:
 ```bash
 chmod +x ./hysteria-linux-amd64
 ./hysteria-linux-amd64
