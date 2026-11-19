@@ -1,0 +1,19 @@
+[book]
+authors = ["bopsifox"]
+language = "ru"
+src = "src"
+title = "Sing-box Guide"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+git-repository-url = "https://git.iusenixosbtw.duckdns.org/bopsi/sing-box-guide"
+edit-url-template = "https://git.iusenixosbtw.duckdns.org/bopsi/sing-box-guide/edit/main/{path}"
+
+[output.html.search]
+enable = true
+limit-results = 30
