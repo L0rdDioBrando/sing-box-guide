@@ -23,4 +23,4 @@ jobs:
 
       - name: Build the book
         working-directory: .
-        run: mdbook build
+        run: git pull && mdbook build
