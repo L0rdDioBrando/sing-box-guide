@@ -1,4 +1,1 @@
-book/
-*.swp
-*~
-.DS_Store
+mdbook
