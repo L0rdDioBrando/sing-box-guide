@@ -1,1 +1,1 @@
-Основная страница: https://docs.iusenixosbtw.duckdns.org/intro.html
+Основная страница: https://l0rddiobrando.github.io/sing-box-guide/

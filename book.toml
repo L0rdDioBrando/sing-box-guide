@@ -9,8 +9,8 @@ build-dir = "book"
 create-missing = false
 
 [output.html]
-default-theme = "ayu"
-preferred-dark-theme = "ayu"
+default-theme = "latte"
+preferred-dark-theme = "macchiato"
 site-url = "/sing-box-guide/"
 
 [output.html.search]
