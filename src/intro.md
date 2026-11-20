@@ -19,12 +19,12 @@
 Требуется VPS с дистрибутивом на базе systemd (например Debian).
 
 ## Подготовка
-1. Установите ваш редактор по умолчанию (например vim или nano):
+Установите ваш редактор по умолчанию (например vim или nano):
 ```bash
 sudo update-alternatives --config editor
 ```
 
-2. Включаем BBR:
+Включаем BBR:
 ```bash
 echo "net.core.default_qdisc=fq" | sudo tee -a /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee -a /etc/sysctl.conf
