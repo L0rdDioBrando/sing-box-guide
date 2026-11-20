@@ -1,0 +1,910 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Sing-box Guide</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "searchindex-4da754c8.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-4f9db510.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Sing-box Guide</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://git.iusenixosbtw.duckdns.org/bopsi/sing-box-guide" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="введение"><a href="#введение" class="header">Введение</a></h1>
+<p>Это мой гайд по настройке <a href="https://github.com/SagerNet/sing-box">sing-box</a> для обхода блокировок. Много чего взял <a href="https://gist.github.com/swrneko/09e60de4d3d8f9a551a1a2c1ab9283c5">отсюда</a>.</p>
+<h2 id="поддерживаемые-протоколы"><a class="header" href="#поддерживаемые-протоколы">Поддерживаемые протоколы:</a></h2>
+<ul>
+<li>
+<p><a href="https://github.com/klzgrad/naiveproxy">NaiveProxy</a></p>
+</li>
+<li>
+<p><a href="https://github.com/trojan-gfw/trojan">Trojan</a></p>
+</li>
+<li>
+<p><a href="https://xtls.github.io/ru/development/protocols/vless.html">VLESS</a>+<a href="https://xtls.github.io/ru/config/transports/reality.html">Reality</a></p>
+</li>
+<li>
+<p><a href="https://v2.hysteria.network">Hysteria2</a></p>
+</li>
+<li>
+<p><a href="https://github.com/anytls/anytls-go">AnyTLS</a></p>
+</li>
+<li>
+<p><a href="https://github.com/tuic-protocol/tuic">TUIC</a></p>
+</li>
+<li>
+<p><a href="https://github.com/shadowsocks/shadowsocks-rust">Shadowsocks</a>+<a href="https://github.com/ihciah/shadow-tls">ShadowTLS</a></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc9484">MASQUE</a>
+Требуется VPS с дистрибутивом на базе systemd (например Debian).</p>
+</li>
+</ul>
+<h2 id="подготовка"><a class="header" href="#подготовка">Подготовка:</a></h2>
+<ol>
+<li>Установите ваш редактор по умолчанию (например vim или nano):</li>
+</ol>
+<pre><code class="language-bash">sudo update-alternatives --config editor
+</code></pre>
+<ol start="2">
+<li>Включаем BBR:</li>
+</ol>
+<pre><code class="language-bash">echo "net.core.default_qdisc=fq" | sudo tee -a /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee -a /etc/sysctl.conf
+echo "net.ipv4.tcp_slow_start_after_idle=0" | sudo tee -a /etc/sysctl.conf # Уменьшает количество подлагиваний
+echo "net.ipv4.tcp_notsent_lowat=131072" | sudo tee -a /etc/sysctl.conf # Лимит на объем неотправленных данных
+sudo sysctl -p
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="naiveproxy"><a href="#naiveproxy" class="header">NaiveProxy</a></h1>
+<h3 id="1-ставим-go"><a class="header" href="#1-ставим-go">1. Ставим Go:</a></h3>
+<pre><code class="language-bash">export GO_VER=$(curl --silent "https://go.dev/VERSION?m=text" | head -n 1)
+wget https://go.dev/dl/$GO_VER.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go &amp;&amp; sudo tar -C /usr/local -xzf $GO_VER.linux-amd64.tar.gz &amp;&amp; rm -rf $GO_VER.linux-amd64.tar.gz
+echo "export PATH=$PATH:/usr/local/go/bin" &gt;&gt; ~/.profile
+source ~/.profile
+</code></pre>
+<h3 id="2-устанавливаем-xcaddy-чтобы-собрать-caddy-с-плагином-от-автора-naiveproxy"><a class="header" href="#2-устанавливаем-xcaddy-чтобы-собрать-caddy-с-плагином-от-автора-naiveproxy">2. Устанавливаем XCaddy чтобы собрать Caddy с плагином от автора NaiveProxy:</a></h3>
+<pre><code class="language-bash">go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+</code></pre>
+<h3 id="3-собираем-caddy-с-нужным-нам-плагином"><a class="header" href="#3-собираем-caddy-с-нужным-нам-плагином">3. Собираем Caddy с нужным нам плагином:</a></h3>
+<pre><code class="language-bash">export CADDY_VERSION=master
+~/go/bin/xcaddy build --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
+sudo mv caddy /usr/bin/caddy
+sudo chmod +x /usr/bin/caddy
+</code></pre>
+<h3 id="4-создаём-папку-caddy-и-редактируем-конфиг-нужен-свой-домен-зарегестрированный-на-ip-адрес-сервера-но-можно-зарегистрировать-бесплатный-на-freedns-или-duckdns"><a class="header" href="#4-создаём-папку-caddy-и-редактируем-конфиг-нужен-свой-домен-зарегестрированный-на-ip-адрес-сервера-но-можно-зарегистрировать-бесплатный-на-freedns-или-duckdns">4. Создаём папку Caddy и редактируем конфиг (нужен свой домен зарегестрированный на IP адрес сервера, но можно зарегистрировать бесплатный на FreeDNS или DuckDNS):</a></h3>
+<pre><code class="language-bash">sudo mkdir /etc/caddy
+sudo touch /etc/caddy/Caddyfile
+sudoedit /etc/caddy/Caddyfile
+</code></pre>
+<h3 id="5-вставляем-такое-содержимое-замените-examplecom-email-user-и-pass-на-ваши"><a class="header" href="#5-вставляем-такое-содержимое-замените-examplecom-email-user-и-pass-на-ваши">5. Вставляем такое содержимое (замените example.com, email, user и pass на ваши):</a></h3>
+<pre><code class="language-caddyfile">{
+  order forward_proxy before file_server
+  log {
+    exclude http.log.error
+    output file /var/log/caddy/access.log {
+      roll_size 10mb
+    }
+  }
+}
+
+:443, example.com { # Ваш домен
+  tls email@example.com # Почта с которой регали домен
+  encode
+  forward_proxy {
+    basic_auth user pass # Логин и пароль (лучше сгенерировать через openssl rand -hex 8)
+    hide_ip
+    hide_via
+    probe_resistance
+  }
+  file_server {
+    root /var/www/html
+  }
+}
+</code></pre>
+<h3 id="6-создаём-systemd-юнит-для-автозагрузки-caddy"><a class="header" href="#6-создаём-systemd-юнит-для-автозагрузки-caddy">6. Создаём systemd юнит для автозагрузки caddy:</a></h3>
+<pre><code class="language-bash">sudo touch /etc/systemd/system/caddy.service 
+sudo cat &lt;&lt;EOF &gt; /etc/systemd/system/caddy.service
+[Unit]
+Description=Caddy
+Documentation=https://caddyserver.com/docs/
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+User=root
+Group=root
+ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+<h3 id="7-включаем-caddy"><a class="header" href="#7-включаем-caddy">7. Включаем Caddy:</a></h3>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo caddy fmt --overwrite /etc/caddy/Caddyfile
+sudo systemctl enable --now caddy
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hysteria2"><a href="#hysteria2" class="header">Hysteria2</a></h1>
+<h3 id="1-устанавливаем-hysteria2"><a class="header" href="#1-устанавливаем-hysteria2">1. Устанавливаем Hysteria2:</a></h3>
+<pre><code class="language-bash">bash &lt;(curl -fsSL https://get.hy2.sh/)
+</code></pre>
+<h3 id="2-редактируем-конфиг-для-hy2"><a class="header" href="#2-редактируем-конфиг-для-hy2">2. Редактируем конфиг для Hy2:</a></h3>
+<pre><code class="language-bash">sudo mkdir /etc/hysteria
+sudo touch /etc/hysteria/config.yaml
+sudoedit /etc/hysteria/config.yaml
+</code></pre>
+<h3 id="3-и-вставляем-пароли-лучше-сгенерировать-через-openssl-rand--hex-8"><a class="header" href="#3-и-вставляем-пароли-лучше-сгенерировать-через-openssl-rand--hex-8">3. И вставляем (Пароли лучше сгенерировать через openssl rand -hex 8):</a></h3>
+<pre><code class="language-yaml">listen: :1234
+
+acme:
+  domains:
+    - example.com # Ваш домен
+  email: email # Почта с которой регистрировали домен
+
+auth:
+  type: password
+  password: hy2_pass # Пароль от Hy2
+
+obfs:
+  type: gecko
+  gecko:
+    password: obfs_pass # Пароль от обфускации
+    minPacketSize: 512  
+    maxPacketSize: 1200  
+
+masquerade:
+  type: proxy
+  proxy:
+    url: https://news.ycombinator.com/
+    rewriteHost: true
+</code></pre>
+<h3 id="4-стартуем-hysteria"><a class="header" href="#4-стартуем-hysteria">4. Стартуем hysteria:</a></h3>
+<pre><code class="language-bash">sudo systemctl enable --now hysteria-server.service
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sing-box"><a href="#sing-box" class="header">sing-box</a></h1>
+<h3 id="1-теперь-ставим-sing-box"><a class="header" href="#1-теперь-ставим-sing-box">1. Теперь ставим sing-box:</a></h3>
+<pre><code class="language-bash">curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
+</code></pre>
+<h3 id="2-генерируем-нужные-значения"><a class="header" href="#2-генерируем-нужные-значения">2. Генерируем нужные значения:</a></h3>
+<pre><code class="language-bash">sing-box generate rand --hex 8 # Имя для MASQUE
+sing-box generate rand --hex 8 # Пароль для MASQUE
+sing-box generate rand --hex 8 # Пароль для Trojan
+sing-box generate uuid # UUID для VLESS
+sing-box generate reality-keypair # Ключи для VLESS (обязательно сохраните публичный ключ)
+sing-box generate rand --hex 2 # Short ID для VLESS
+sing-box generate rand --hex 8 # Пароль для AnyTLS
+sing-box generate rand --hex 8 # Имя для AnyTLS
+sing-box generate rand --hex 8 # Имя для TUIC
+sing-box generate uuid # UUID для TUIC
+sing-box generate rand --hex 8 # Пароль от TUIC
+sing-box generate rand --base64 16 # Пароль для Shadowsocks
+sing-box generate rand --hex 8 # Имя для ShadowTLS
+sing-box generate rand --hex 8 # Пароль для ShadowTLS
+</code></pre>
+<h3 id="3-редактируем-конфиг"><a class="header" href="#3-редактируем-конфиг">3. Редактируем конфиг:</a></h3>
+<pre><code class="language-bash">sudoedit /etc/sing-box/config.json
+</code></pre>
+<h3 id="4-вставьте-если-тут-уже-что-то-было-удалите"><a class="header" href="#4-вставьте-если-тут-уже-что-то-было-удалите">4. Вставьте (если тут уже что-то было удалите):</a></h3>
+<pre><code class="language-jsonc">{
+  "log": {
+    "level": "warn"
+  },
+  "endpoints": [
+    {
+      "type": "masque-server",
+      "tag": "masque-server",
+      "listen": "::",
+      "listen_port": 500,
+      "users": [
+        {
+          "username": "username",
+          "password": "password"
+        }
+      ],
+      "version": 3,
+      "tls": {
+        "enabled": true,
+        "certificate_path": "/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/example.com/example.com.crt",
+        "key_path": "/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/example.com/example.com.key"
+      },
+      "address": "10.0.0.1/24"
+    }
+  ],
+  "inbounds": [
+    {
+      "type": "trojan",
+      "tag": "trojan-in",
+      "listen": "::",
+      "listen_port": 20808,
+      "users": [
+        {
+          "password": "password"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "certificate_path": "/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/example.com/example.com.crt",
+        "key_path": "/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/example.com/example.com.key"
+      },
+      "fallback": {
+        "server": "127.0.0.1",
+        "server_port": 8082
+      },
+      "fallback_for_alpn": {
+        "http/1.1": {
+          "server": "127.0.0.1",
+          "server_port": 8081
+        }
+      }    
+    },
+    {
+      "type": "vless",
+      "tag": "vless-in",
+      "listen": "::",
+      "listen_port": 10808,
+      "users": [
+        {
+          "uuid": "uuid",
+          "flow": "xtls-rprx-vision"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "aws.amazon.com",
+        "reality": {
+          "enabled": true,
+          "handshake": {
+            "server": "aws.amazon.com",
+            "server_port": 443
+          },
+          "private_key": "private_key",
+          "short_id": "short_id"
+        }
+      }
+    },
+    {
+      "type": "anytls",
+      "tag": "anytls-in",
+      "listen": "::",
+      "listen_port": 8443,
+      "tls": {
+        "enabled": true,
+        "certificate_path": "/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/example.com/example.com.crt",
+        "key_path": "/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/example.com/example.com.key"
+      },
+      "users": [
+        {
+          "name": "name",
+          "password": "password"
+        }
+      ]
+    },
+    {
+      "type": "tuic",
+      "tag": "tuic-in",
+      "listen": "::",
+      "listen_port": 8080,
+      "users": [
+        {
+          "name": "name",
+          "uuid": "uuid",
+          "password": "password"
+        }
+      ],
+      "congestion_control": "bbr",
+      "tls": {
+        "enabled": true,
+        "certificate_path": "/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/example.com/example.com.crt",
+        "key_path": "/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/example.com/example.com.key"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "ss-in",
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "password"
+    },
+    {
+      "type": "shadowtls",
+      "tag": "st-in",
+      "listen": "::",
+      "listen_port": 1080,
+      "detour": "ss-in",
+      "version": 3,
+      "users": [
+        {
+          "name": "name",
+          "password": "password"
+        }
+      ],
+      "handshake": {
+        "server": "aws.amazon.com",
+        "server_port": 443
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct"
+    }
+  ]
+}
+</code></pre>
+<p>Замените example.com и private_key на ваш домен и приватный ключ.</p>
+<h3 id="5-отредактируйте-systemd-юнит-sing-box"><a class="header" href="#5-отредактируйте-systemd-юнит-sing-box">5. Отредактируйте systemd юнит sing-box:</a></h3>
+<pre><code class="language-bash">sudoedit /usr/lib/systemd/system/sing-box.service
+</code></pre>
+<p>Сразу после [Service] добавте строку User=root.</p>
+<h3 id="6-включаем-sing-box"><a class="header" href="#6-включаем-sing-box">6. Включаем sing-box:</a></h3>
+<pre><code class="language-bash">sudo systemctl daemon-reload 
+sudo systemctl enable --now sing-box
+</code></pre>
+<h3 id="7-открываем-все-необходимые-порты-команда-только-для-ufw"><a class="header" href="#7-открываем-все-необходимые-порты-команда-только-для-ufw">7. Открываем все необходимые порты (команда только для ufw):</a></h3>
+<pre><code class="language-bash">sudo ufw enable
+sudo ufw allow 443 
+sudo ufw allow 80
+sudo ufw allow 20808
+sudo ufw allow 10808
+sudo ufw allow 1234
+sudo ufw allow 8443
+sudo ufw allow 8080
+sudo ufw allow 1080
+sudo ufw allow 500
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="naiveproxy-1"><a href="#naiveproxy-1" class="header">NaiveProxy</a></h1>
+<h3 id="скачиваем-последний-релиз"><a class="header" href="#скачиваем-последний-релиз">Скачиваем последний релиз:</a></h3>
+<pre><code class="language-bash">NAIVE_VER=$(curl -sL https://api.github.com/repos/klzgrad/naiveproxy/releases/latest | sed -n 's/.*"tag_name": "\([^"]*\)".*/\1/p' | head -n 1)
+curl -sL https://github.com/klzgrad/naiveproxy/releases/download/${NAIVE_VER}/naiveproxy-${NAIVE_VER}-linux-x64.tar.xz | tar -xJ
+cd naiveproxy-${NAIVE_VER}-linux-x64
+nano config.json
+</code></pre>
+<h3 id="редактируем"><a class="header" href="#редактируем">Редактируем:</a></h3>
+<pre><code class="language-jsonc">{
+  "listen": [
+    "socks://127.0.0.1:1080",
+    "http://127.0.0.1:8080"
+  ], // Можно заменить на друге порты
+  // quic:// можно заменить на https:// если нужен HTTP/2
+  "proxy": "quic://user:pass@example.com", // Замените user на имя, pass на пароль и example.com на ваш домен (это всё можно найти в Caddyfile на сервере)
+  "log": ""
+}
+</code></pre>
+<h3 id="запускаем"><a class="header" href="#запускаем">Запускаем:</a></h3>
+<pre><code class="language-bash">./naive
+</code></pre>
+<p>Запуск поднимет SOCKS5 прокси на 127.0.0.1:1080 и HTTP на 8080 который можно например, подключить в Telegram и т. д.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hysteria2-1"><a href="#hysteria2-1" class="header">Hysteria2</a></h1>
+<h3 id="1-устанавливаем-hy2-ссылку-можно-заменить-под-вашу-платформу"><a class="header" href="#1-устанавливаем-hy2-ссылку-можно-заменить-под-вашу-платформу">1. Устанавливаем Hy2 (ссылку можно заменить под вашу платформу):</a></h3>
+<pre><code class="language-bash">wget https://download.hysteria.network/app/latest/hysteria-linux-amd64
+</code></pre>
+<h3 id="2-создайте-configyaml-и-вставте"><a class="header" href="#2-создайте-configyaml-и-вставте">2. Создайте config.yaml и вставте:</a></h3>
+<pre><code class="language-yaml">server: IP:1234 # Замените IP на IP сервера
+
+auth: hy2_pass # Пароль от Hy2
+
+tls:
+  sni: example.com # Ваш домен
+
+obfs:
+  type: gecko
+  gecko:
+    password: obfs_pass # Пароль от обфускации
+    minPacketSize: 512  
+    maxPacketSize: 1200
+
+bandwidth: # Можно менять в зависимости от скорости вашего интернета
+  up: 100 mbps
+  down: 300 mbps
+
+socks5:
+  listen: 127.0.0.1:2080
+
+http:
+  listen: 127.0.0.1:3128
+
+lazy: true
+</code></pre>
+<h3 id="3-запустите"><a class="header" href="#3-запустите">3. Запустите:</a></h3>
+<pre><code class="language-bash">chmod +x ./hysteria-linux-amd64
+./hysteria-linux-amd64
+</code></pre>
+<p>Запуск поднимет SOCKS5 прокси на 2080 порту и HTTP на 3128.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sing-box-1"><a href="#sing-box-1" class="header">sing-box</a></h1>
+<h3 id="устанавливаем--и-редактируем-sing-box"><a class="header" href="#устанавливаем--и-редактируем-sing-box">Устанавливаем  и редактируем sing-box:</a></h3>
+<pre><code class="language-bash">curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
+sudoedit config.jsonc
+</code></pre>
+<h3 id="вставляем-конфиг"><a class="header" href="#вставляем-конфиг">Вставляем конфиг:</a></h3>
+<pre><code class="language-jsonc">{
+  "$schema": "https://sing-box.sagernet.org/schema.json",
+  "log": {
+    "level": "debug"
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "h3",
+        "tag": "dns",
+        "detour": "selector",
+        "server": "1.1.1.1",
+        "tls": {
+          "server_name": "cloudflare-dns.com"
+        }
+      }
+    ],
+    "strategy": "ipv4_only" // Можете удалить строку если у вас поддерживается IPv6
+  },
+  "endpoints": [
+    {
+      "type": "masque-client",
+      "tag": "masque-client",
+      "server": "server_IP",
+      "server_port": 500,
+      "username": "username",
+      "password": "password",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      },
+      "version": 3,
+      "disable_version_fallback": true,
+      "on_demand": true,
+      "disable_path_mtu_discovery": true
+    }
+  ],
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "tun0",
+      "mtu": 1280,
+      "address": "172.19.0.1/30",
+      "auto_route": true,
+      "strict_route": true,
+      "route_exclude_address": [
+        "server_IP/32"
+      ],
+      "exclude_package": [
+        "com.android.captiveportallogin",
+        "ru.oneme.app"
+      ]
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "naive",
+      "tag": "naive-out",
+      "server": "server_IP",
+      "server_port": 443,
+      "username": "username",
+      "password": "password",
+      "insecure_concurrency": 1,
+      "udp_over_tcp": true,
+      "quic": true, // Можете убрать чтобы использовался HTTP/2
+      "quic_congestion_control": "bbr",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "trojan-out",
+      "server": "server_IP",
+      "server_port": 20808,
+      "password": "password",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "vless-out",
+      "server": "server_IP",
+      "server_port": 10808,
+      "uuid": "uuid",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "aws.amazon.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "public_key",
+          "short_id": "short_id"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "hy2-out",
+      "server": "server_IP",
+      "server_port": 1234,
+      "up_mbps": 100,
+      "down_mbps": 300,
+      "obfs": {
+        "type": "gecko",
+        "password": "password"
+      },
+      "password": "password",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      }
+    },
+    {
+      "type": "anytls",
+      "tag": "anytls-out",
+      "server": "server_IP",
+      "server_port": 8443,
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      },
+      "password": "password",
+      "idle_session_check_interval": "30s",
+      "idle_session_timeout": "30s",
+      "min_idle_session": 5
+    },
+    {
+      "type": "tuic",
+      "tag": "tuic-out",
+      "server": "server_IP",
+      "server_port": 8080,
+      "uuid": "uuid",
+      "password": "password",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "native",
+      "tls": {
+        "enabled": true,
+        "server_name": "example.com"
+      }
+    },
+    {
+      "type": "shadowtls",
+      "tag": "st-out",
+      "server": "server_IP",
+      "server_port": 1080,
+      "version": 3,
+      "password": "password",
+      "tls": {
+        "enabled": true,
+        "server_name": "aws.amazon.com"
+      }
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "ss-out",
+      "detour": "st-out",
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "password"
+    },
+    {
+      "type": "selector",
+      "tag": "selector",
+      "outbounds": [
+        "naive-out",
+        "trojan-out",
+        "vless-out",
+        "hy2-out",
+        "anytls-out",
+        "tuic-out",
+        "ss-out",
+        "masque-client"
+      ],
+      "default": "hy2-out" // Тут меняются протоколы
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "sniff",
+        "sniffer": [
+          "http",
+          "tls",
+          "dns",
+          "quic"
+        ],
+        "timeout": "300ms"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "action": "resolve",
+        "server": "dns"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "domain_suffix": [
+          ".ru"
+        ],
+        "domain_keyword": [
+          "github"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "process_name": [
+          "ssh",
+          "git"
+        ],
+        "outbound": "direct"
+      }
+    ],
+    "final": "selector",
+    "auto_detect_interface": true,
+    "default_domain_resolver": "dns"
+  }
+}
+</code></pre>
+<p>Замените:</p>
+<ul>
+<li>server_IP на IP адрес вашего VPS.</li>
+<li>public_key на публичный ключ сгенерированный вместе с приватным.</li>
+<li>username, password, uuid, short_id на теже самые что и на сервере.</li>
+<li>example.com на ваш домен.</li>
+</ul>
+<h3 id="запускаем-1"><a class="header" href="#запускаем-1">Запускаем:</a></h3>
+<pre><code class="language-bash">sudo sing-box run -c ./config.jsonc
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="альтернативные-клиенты"><a class="header" href="#альтернативные-клиенты">Альтернативные клиенты:</a></h1>
+<p>На Windows и Linux: <a href="https://throneproj.github.io/ru/">Throne</a>, <a href="https://github.com/qr243vbi/nekobox">NekoBox</a> и <a href="https://github.com/SagerNet/sing-box-for-desktop">Sing-box-For-Desktop</a>.</p>
+<p>На Android: <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid">NekoBox For Android</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="как-менять-протоколы"><a class="header" href="#как-менять-протоколы">Как менять протоколы:</a></h1>
+<p>В selector поменяйте значение default на тег какого либо из протоколов (они перечислены блоком выше).</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="установка-на-android"><a class="header" href="#установка-на-android">Установка на Android:</a></h1>
+<p>Скачиваем .apk файл с последнего <a href="https://github.com/SagerNet/sing-box/releases">пре-релиза</a> и устанавливаем. Перекидываем конфиг на телефон и заходим в sing-box. Нажимаем на + и выбираем “Импорт из файла”. Импортируем конфиг и подключаемся.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
