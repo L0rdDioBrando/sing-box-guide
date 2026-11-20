@@ -1,9 +1,10 @@
-### 1. Теперь ставим sing-box:
+## Подготовка
+1. Теперь ставим sing-box:
 ```bash
 curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 ```
 
-### 2. Генерируем нужные значения:
+2. Генерируем нужные значения:
 ```bash
 sing-box generate rand --hex 8 # Имя для MASQUE
 sing-box generate rand --hex 8 # Пароль для MASQUE
@@ -21,12 +22,27 @@ sing-box generate rand --hex 8 # Имя для ShadowTLS
 sing-box generate rand --hex 8 # Пароль для ShadowTLS
 ``` 
 
-### 3. Редактируем конфиг:
+3. Открываем все необходимые порты (команда только для ufw):
+```bash
+sudo ufw enable
+sudo ufw allow 443 
+sudo ufw allow 80
+sudo ufw allow 20808
+sudo ufw allow 10808
+sudo ufw allow 1234
+sudo ufw allow 8443
+sudo ufw allow 8080
+sudo ufw allow 1080
+sudo ufw allow 500
+```
+
+## Редактирование
+3. Редактируем конфиг:
 ```bash
 sudoedit /etc/sing-box/config.json
 ```
 
-### 4. Вставьте (если тут уже что-то было удалите):
+4. Вставьте (если тут уже что-то было удалите):
 ```jsonc
 {
   "log": {
@@ -175,28 +191,14 @@ sudoedit /etc/sing-box/config.json
 ```
 Замените example.com и private_key на ваш домен и приватный ключ.
 
-### 5. Отредактируйте systemd юнит sing-box:
+5. Отредактируйте systemd юнит sing-box:
 ```bash
 sudoedit /usr/lib/systemd/system/sing-box.service
 ```
 Сразу после [Service] добавте строку User=root.
 
-### 6. Включаем sing-box:
+6. Включаем sing-box:
 ```bash
 sudo systemctl daemon-reload 
 sudo systemctl enable --now sing-box
-```
-
-### 7. Открываем все необходимые порты (команда только для ufw):
-```bash
-sudo ufw enable
-sudo ufw allow 443 
-sudo ufw allow 80
-sudo ufw allow 20808
-sudo ufw allow 10808
-sudo ufw allow 1234
-sudo ufw allow 8443
-sudo ufw allow 8080
-sudo ufw allow 1080
-sudo ufw allow 500
 ```

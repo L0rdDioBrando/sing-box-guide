@@ -1,6 +1,6 @@
 Это мой гайд по настройке [sing-box](https://github.com/SagerNet/sing-box) для обхода блокировок. Много чего взял [отсюда](https://gist.github.com/swrneko/09e60de4d3d8f9a551a1a2c1ab9283c5).
 
-## Поддерживаемые протоколы:
+## Поддерживаемые протоколы
   - [NaiveProxy](https://github.com/klzgrad/naiveproxy)
 
   - [Trojan](https://github.com/trojan-gfw/trojan)
@@ -18,7 +18,7 @@
   - [MASQUE](https://datatracker.ietf.org/doc/html/rfc9484)
 Требуется VPS с дистрибутивом на базе systemd (например Debian).
 
-## Подготовка:
+## Подготовка
 1. Установите ваш редактор по умолчанию (например vim или nano):
 ```bash
 sudo update-alternatives --config editor

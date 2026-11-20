@@ -1,16 +1,18 @@
-### 1. Устанавливаем Hysteria2:
+## Подготовка
+1. Устанавливаем Hysteria2:
 ```bash
 bash <(curl -fsSL https://get.hy2.sh/)
 ```
 
-### 2. Редактируем конфиг для Hy2:
+2. Редактируем конфиг для Hy2:
 ```bash
 sudo mkdir /etc/hysteria
 sudo touch /etc/hysteria/config.yaml
 sudoedit /etc/hysteria/config.yaml
 ```
 
-### 3. И вставляем (Пароли лучше сгенерировать через openssl rand -hex 8):
+## Редактирование
+3. Вставляем (Пароли лучше сгенерировать через openssl rand -hex 8):
 ```yaml
 listen: :1234
 
@@ -37,7 +39,7 @@ masquerade:
     rewriteHost: true
 ```
 
-### 4. Стартуем hysteria:
+4. Стартуем юнит hysteria:
 ```bash
 sudo systemctl enable --now hysteria-server.service
 ```

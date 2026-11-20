@@ -1,3 +1,4 @@
+## Подготовка
 ### Скачиваем последний релиз:
 ```bash
 NAIVE_VER=$(curl -sL https://api.github.com/repos/klzgrad/naiveproxy/releases/latest | sed -n 's/.*"tag_name": "\([^"]*\)".*/\1/p' | head -n 1)
@@ -6,6 +7,7 @@ cd naiveproxy-${NAIVE_VER}-linux-x64
 nano config.json
 ```
 
+## Редактирование
 ### Редактируем:
 ```jsonc
 {

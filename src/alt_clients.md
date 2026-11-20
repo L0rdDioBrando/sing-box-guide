@@ -1,3 +1,4 @@
-# Установка на Android:
-Скачиваем .apk файл с последнего [пре-релиза](https://github.com/SagerNet/sing-box/releases) и устанавливаем. Перекидываем конфиг на телефон и заходим в sing-box. Нажимаем на + и выбираем "Импорт из файла". Импортируем конфиг и подключаемся.
+# Альтернативные клиенты
+На Windows и Linux: [Throne](https://throneproj.github.io/ru/), [NekoBox](https://github.com/qr243vbi/nekobox) и [Sing-box-For-Desktop](https://github.com/SagerNet/sing-box-for-desktop).
 
+На Android: [NekoBox For Android](https://github.com/MatsuriDayo/NekoBoxForAndroid).
