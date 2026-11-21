@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "latte";
             const default_dark_theme = "macchiato";
-            window.path_to_searchindex_js = "../searchindex-4da754c8.js";
+            window.path_to_searchindex_js = "../searchindex-743f1cef.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-4f9db510.js"></script>
@@ -130,7 +130,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="frappe">Frappe</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mocha">Navy</Mocha></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</Mocha></li>
                         </ul>
                         <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
                             <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
@@ -174,10 +174,11 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h3 id="1-теперь-ставим-sing-box"><a class="header" href="#1-теперь-ставим-sing-box">1. Теперь ставим sing-box:</a></h3>
+                        <h2 id="подготовка"><a class="header" href="#подготовка">Подготовка</a></h2>
+<p>Теперь ставим sing-box:</p>
 <pre><code class="language-bash">curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 </code></pre>
-<h3 id="2-генерируем-нужные-значения"><a class="header" href="#2-генерируем-нужные-значения">2. Генерируем нужные значения:</a></h3>
+<p>Генерируем нужные значения:</p>
 <pre><code class="language-bash">sing-box generate rand --hex 8 # Имя для MASQUE
 sing-box generate rand --hex 8 # Пароль для MASQUE
 sing-box generate rand --hex 8 # Пароль для Trojan
@@ -193,11 +194,25 @@ sing-box generate rand --base64 16 # Пароль для Shadowsocks
 sing-box generate rand --hex 8 # Имя для ShadowTLS
 sing-box generate rand --hex 8 # Пароль для ShadowTLS
 </code></pre>
-<h3 id="3-редактируем-конфиг"><a class="header" href="#3-редактируем-конфиг">3. Редактируем конфиг:</a></h3>
+<p>Открываем все необходимые порты (команда только для ufw):</p>
+<pre><code class="language-bash">sudo ufw limit 22/tcp
+sudo ufw allow 443
+sudo ufw allow 80/tcp
+sudo ufw allow 20808/tcp
+sudo ufw allow 10808/tcp
+sudo ufw allow 8443/tcp
+sudo ufw allow 1080/tcp
+sudo ufw allow 8080/udp
+sudo ufw allow 1234/udp
+sudo ufw allow 500/udp
+sudo ufw enable
+</code></pre>
+<h2 id="редактирование"><a class="header" href="#редактирование">Редактирование</a></h2>
+<p>Редактируем конфиг:</p>
 <pre><code class="language-bash">sudoedit /etc/sing-box/config.json
 </code></pre>
-<h3 id="4-вставьте-если-тут-уже-что-то-было-удалите"><a class="header" href="#4-вставьте-если-тут-уже-что-то-было-удалите">4. Вставьте (если тут уже что-то было удалите):</a></h3>
-<pre><code class="language-jsonc">{
+<p>Вставьте (если тут уже что-то было удалите):</p>
+<pre><code class="language-json">{
   "log": {
     "level": "warn"
   },
@@ -342,26 +357,14 @@ sing-box generate rand --hex 8 # Пароль для ShadowTLS
   ]
 }
 </code></pre>
-<p>Замените example.com и private_key на ваш домен и приватный ключ.</p>
-<h3 id="5-отредактируйте-systemd-юнит-sing-box"><a class="header" href="#5-отредактируйте-systemd-юнит-sing-box">5. Отредактируйте systemd юнит sing-box:</a></h3>
+<p>Замените name, password, example.com и private_key на cвои.</p>
+<p>Отредактируйте systemd юнит sing-box:</p>
 <pre><code class="language-bash">sudoedit /usr/lib/systemd/system/sing-box.service
 </code></pre>
-<p>Сразу после [Service] добавте строку User=root.</p>
-<h3 id="6-включаем-sing-box"><a class="header" href="#6-включаем-sing-box">6. Включаем sing-box:</a></h3>
+<p>Сразу после [Service] добавьте строку User=root.</p>
+<p>Включаем sing-box:</p>
 <pre><code class="language-bash">sudo systemctl daemon-reload 
 sudo systemctl enable --now sing-box
-</code></pre>
-<h3 id="7-открываем-все-необходимые-порты-команда-только-для-ufw"><a class="header" href="#7-открываем-все-необходимые-порты-команда-только-для-ufw">7. Открываем все необходимые порты (команда только для ufw):</a></h3>
-<pre><code class="language-bash">sudo ufw enable
-sudo ufw allow 443 
-sudo ufw allow 80
-sudo ufw allow 20808
-sudo ufw allow 10808
-sudo ufw allow 1234
-sudo ufw allow 8443
-sudo ufw allow 8080
-sudo ufw allow 1080
-sudo ufw allow 500
 </code></pre>
 
                     </main>

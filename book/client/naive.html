@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "latte";
             const default_dark_theme = "macchiato";
-            window.path_to_searchindex_js = "../searchindex-4da754c8.js";
+            window.path_to_searchindex_js = "../searchindex-743f1cef.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-4f9db510.js"></script>
@@ -130,7 +130,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="frappe">Frappe</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mocha">Navy</Mocha></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</Mocha></li>
                         </ul>
                         <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
                             <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
@@ -174,14 +174,16 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h3 id="скачиваем-последний-релиз"><a class="header" href="#скачиваем-последний-релиз">Скачиваем последний релиз:</a></h3>
+                        <h2 id="подготовка"><a class="header" href="#подготовка">Подготовка</a></h2>
+<p>Скачиваем последний релиз:</p>
 <pre><code class="language-bash">NAIVE_VER=$(curl -sL https://api.github.com/repos/klzgrad/naiveproxy/releases/latest | sed -n 's/.*"tag_name": "\([^"]*\)".*/\1/p' | head -n 1)
 curl -sL https://github.com/klzgrad/naiveproxy/releases/download/${NAIVE_VER}/naiveproxy-${NAIVE_VER}-linux-x64.tar.xz | tar -xJ
 cd naiveproxy-${NAIVE_VER}-linux-x64
 nano config.json
 </code></pre>
-<h3 id="редактируем"><a class="header" href="#редактируем">Редактируем:</a></h3>
-<pre><code class="language-jsonc">{
+<h2 id="редактирование"><a class="header" href="#редактирование">Редактирование</a></h2>
+<p>Редактируем:</p>
+<pre><code class="language-json">{
   "listen": [
     "socks://127.0.0.1:1080",
     "http://127.0.0.1:8080"
@@ -191,7 +193,7 @@ nano config.json
   "log": ""
 }
 </code></pre>
-<h3 id="запускаем"><a class="header" href="#запускаем">Запускаем:</a></h3>
+<p>Запускаем:</p>
 <pre><code class="language-bash">./naive
 </code></pre>
 <p>Запуск поднимет SOCKS5 прокси на 127.0.0.1:1080 и HTTP на 8080 который можно например, подключить в Telegram и т. д.</p>

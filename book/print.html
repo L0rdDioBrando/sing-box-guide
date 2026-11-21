@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "latte";
             const default_dark_theme = "macchiato";
-            window.path_to_searchindex_js = "searchindex-4da754c8.js";
+            window.path_to_searchindex_js = "searchindex-743f1cef.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-4f9db510.js"></script>
@@ -131,7 +131,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="frappe">Frappe</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mocha">Navy</Mocha></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</Mocha></li>
                         </ul>
                         <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
                             <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
@@ -177,7 +177,7 @@
                     <main>
                         <h1 id="введение"><a href="#введение" class="header">Введение</a></h1>
 <p>Это мой гайд по настройке <a href="https://github.com/SagerNet/sing-box">sing-box</a> для обхода блокировок. Много чего взял <a href="https://gist.github.com/swrneko/09e60de4d3d8f9a551a1a2c1ab9283c5">отсюда</a>.</p>
-<h2 id="поддерживаемые-протоколы"><a class="header" href="#поддерживаемые-протоколы">Поддерживаемые протоколы:</a></h2>
+<h2 id="поддерживаемые-протоколы"><a class="header" href="#поддерживаемые-протоколы">Поддерживаемые протоколы</a></h2>
 <ul>
 <li>
 <p><a href="https://github.com/klzgrad/naiveproxy">NaiveProxy</a></p>
@@ -201,19 +201,15 @@
 <p><a href="https://github.com/shadowsocks/shadowsocks-rust">Shadowsocks</a>+<a href="https://github.com/ihciah/shadow-tls">ShadowTLS</a></p>
 </li>
 <li>
-<p><a href="https://datatracker.ietf.org/doc/html/rfc9484">MASQUE</a>
-Требуется VPS с дистрибутивом на базе systemd (например Debian).</p>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc9484">MASQUE</a></p>
 </li>
 </ul>
-<h2 id="подготовка"><a class="header" href="#подготовка">Подготовка:</a></h2>
-<ol>
-<li>Установите ваш редактор по умолчанию (например vim или nano):</li>
-</ol>
+<p>Требуется VPS с дистрибутивом на базе systemd (например Debian).</p>
+<h2 id="подготовка"><a class="header" href="#подготовка">Подготовка</a></h2>
+<p>Установите ваш редактор по умолчанию (например vim или nano):</p>
 <pre><code class="language-bash">sudo update-alternatives --config editor
 </code></pre>
-<ol start="2">
-<li>Включаем BBR:</li>
-</ol>
+<p>Включаем BBR:</p>
 <pre><code class="language-bash">echo "net.core.default_qdisc=fq" | sudo tee -a /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee -a /etc/sysctl.conf
 echo "net.ipv4.tcp_slow_start_after_idle=0" | sudo tee -a /etc/sysctl.conf # Уменьшает количество подлагиваний
@@ -222,29 +218,32 @@ sudo sysctl -p
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="naiveproxy"><a href="#naiveproxy" class="header">NaiveProxy</a></h1>
-<h3 id="1-ставим-go"><a class="header" href="#1-ставим-go">1. Ставим Go:</a></h3>
+<h2 id="подготовка-1"><a class="header" href="#подготовка-1">Подготовка</a></h2>
+<p>Ставим Go:</p>
 <pre><code class="language-bash">export GO_VER=$(curl --silent "https://go.dev/VERSION?m=text" | head -n 1)
 wget https://go.dev/dl/$GO_VER.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go &amp;&amp; sudo tar -C /usr/local -xzf $GO_VER.linux-amd64.tar.gz &amp;&amp; rm -rf $GO_VER.linux-amd64.tar.gz
 echo "export PATH=$PATH:/usr/local/go/bin" &gt;&gt; ~/.profile
 source ~/.profile
 </code></pre>
-<h3 id="2-устанавливаем-xcaddy-чтобы-собрать-caddy-с-плагином-от-автора-naiveproxy"><a class="header" href="#2-устанавливаем-xcaddy-чтобы-собрать-caddy-с-плагином-от-автора-naiveproxy">2. Устанавливаем XCaddy чтобы собрать Caddy с плагином от автора NaiveProxy:</a></h3>
+<p>Устанавливаем XCaddy чтобы собрать Caddy с плагином от автора NaiveProxy:</p>
 <pre><code class="language-bash">go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 </code></pre>
-<h3 id="3-собираем-caddy-с-нужным-нам-плагином"><a class="header" href="#3-собираем-caddy-с-нужным-нам-плагином">3. Собираем Caddy с нужным нам плагином:</a></h3>
+<h2 id="компиляция-caddy"><a class="header" href="#компиляция-caddy">Компиляция Caddy</a></h2>
+<p>Собираем Caddy с нужным нам плагином:</p>
 <pre><code class="language-bash">export CADDY_VERSION=master
 ~/go/bin/xcaddy build --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
 sudo mv caddy /usr/bin/caddy
 sudo chmod +x /usr/bin/caddy
 </code></pre>
-<h3 id="4-создаём-папку-caddy-и-редактируем-конфиг-нужен-свой-домен-зарегестрированный-на-ip-адрес-сервера-но-можно-зарегистрировать-бесплатный-на-freedns-или-duckdns"><a class="header" href="#4-создаём-папку-caddy-и-редактируем-конфиг-нужен-свой-домен-зарегестрированный-на-ip-адрес-сервера-но-можно-зарегистрировать-бесплатный-на-freedns-или-duckdns">4. Создаём папку Caddy и редактируем конфиг (нужен свой домен зарегестрированный на IP адрес сервера, но можно зарегистрировать бесплатный на FreeDNS или DuckDNS):</a></h3>
+<h2 id="редактирование"><a class="header" href="#редактирование">Редактирование</a></h2>
+<p>Создаём папку Caddy и редактируем конфиг (нужен свой домен зарегестрированный на IP адрес сервера, но можно зарегистрировать бесплатный на FreeDNS или DuckDNS):</p>
 <pre><code class="language-bash">sudo mkdir /etc/caddy
 sudo touch /etc/caddy/Caddyfile
 sudoedit /etc/caddy/Caddyfile
 </code></pre>
-<h3 id="5-вставляем-такое-содержимое-замените-examplecom-email-user-и-pass-на-ваши"><a class="header" href="#5-вставляем-такое-содержимое-замените-examplecom-email-user-и-pass-на-ваши">5. Вставляем такое содержимое (замените example.com, email, user и pass на ваши):</a></h3>
-<pre><code class="language-caddyfile">{
+<p>Вставляем такое содержимое (замените example.com, email, user и pass на ваши):</p>
+<pre><code class="language-nginx">{
   order forward_proxy before file_server
   log {
     exclude http.log.error
@@ -268,8 +267,8 @@ sudoedit /etc/caddy/Caddyfile
   }
 }
 </code></pre>
-<h3 id="6-создаём-systemd-юнит-для-автозагрузки-caddy"><a class="header" href="#6-создаём-systemd-юнит-для-автозагрузки-caddy">6. Создаём systemd юнит для автозагрузки caddy:</a></h3>
-<pre><code class="language-bash">sudo touch /etc/systemd/system/caddy.service 
+<p>Создаём systemd юнит для автозагрузки caddy:</p>
+<pre><code class="language-ini">sudo touch /etc/systemd/system/caddy.service 
 sudo cat &lt;&lt;EOF &gt; /etc/systemd/system/caddy.service
 [Unit]
 Description=Caddy
@@ -293,22 +292,24 @@ AmbientCapabilities=CAP_NET_BIND_SERVICE
 WantedBy=multi-user.target
 EOF
 </code></pre>
-<h3 id="7-включаем-caddy"><a class="header" href="#7-включаем-caddy">7. Включаем Caddy:</a></h3>
-<pre><code class="language-bash">sudo systemctl daemon-reload
-sudo caddy fmt --overwrite /etc/caddy/Caddyfile
+<p>Включаем Caddy:</p>
+<pre><code class="language-bash">sudo caddy fmt --overwrite /etc/caddy/Caddyfile
+sudo systemctl daemon-reload
 sudo systemctl enable --now caddy
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="hysteria2"><a href="#hysteria2" class="header">Hysteria2</a></h1>
-<h3 id="1-устанавливаем-hysteria2"><a class="header" href="#1-устанавливаем-hysteria2">1. Устанавливаем Hysteria2:</a></h3>
+<h2 id="подготовка-2"><a class="header" href="#подготовка-2">Подготовка</a></h2>
+<p>Устанавливаем Hysteria2:</p>
 <pre><code class="language-bash">bash &lt;(curl -fsSL https://get.hy2.sh/)
 </code></pre>
-<h3 id="2-редактируем-конфиг-для-hy2"><a class="header" href="#2-редактируем-конфиг-для-hy2">2. Редактируем конфиг для Hy2:</a></h3>
+<p>Редактируем конфиг для Hy2:</p>
 <pre><code class="language-bash">sudo mkdir /etc/hysteria
 sudo touch /etc/hysteria/config.yaml
 sudoedit /etc/hysteria/config.yaml
 </code></pre>
-<h3 id="3-и-вставляем-пароли-лучше-сгенерировать-через-openssl-rand--hex-8"><a class="header" href="#3-и-вставляем-пароли-лучше-сгенерировать-через-openssl-rand--hex-8">3. И вставляем (Пароли лучше сгенерировать через openssl rand -hex 8):</a></h3>
+<h2 id="редактирование-1"><a class="header" href="#редактирование-1">Редактирование</a></h2>
+<p>Вставляем (Пароли лучше сгенерировать через openssl rand -hex 8):</p>
 <pre><code class="language-yaml">listen: :1234
 
 acme:
@@ -333,15 +334,16 @@ masquerade:
     url: https://news.ycombinator.com/
     rewriteHost: true
 </code></pre>
-<h3 id="4-стартуем-hysteria"><a class="header" href="#4-стартуем-hysteria">4. Стартуем hysteria:</a></h3>
+<p>Стартуем юнит hysteria:</p>
 <pre><code class="language-bash">sudo systemctl enable --now hysteria-server.service
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="sing-box"><a href="#sing-box" class="header">sing-box</a></h1>
-<h3 id="1-теперь-ставим-sing-box"><a class="header" href="#1-теперь-ставим-sing-box">1. Теперь ставим sing-box:</a></h3>
+<h2 id="подготовка-3"><a class="header" href="#подготовка-3">Подготовка</a></h2>
+<p>Теперь ставим sing-box:</p>
 <pre><code class="language-bash">curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 </code></pre>
-<h3 id="2-генерируем-нужные-значения"><a class="header" href="#2-генерируем-нужные-значения">2. Генерируем нужные значения:</a></h3>
+<p>Генерируем нужные значения:</p>
 <pre><code class="language-bash">sing-box generate rand --hex 8 # Имя для MASQUE
 sing-box generate rand --hex 8 # Пароль для MASQUE
 sing-box generate rand --hex 8 # Пароль для Trojan
@@ -357,11 +359,25 @@ sing-box generate rand --base64 16 # Пароль для Shadowsocks
 sing-box generate rand --hex 8 # Имя для ShadowTLS
 sing-box generate rand --hex 8 # Пароль для ShadowTLS
 </code></pre>
-<h3 id="3-редактируем-конфиг"><a class="header" href="#3-редактируем-конфиг">3. Редактируем конфиг:</a></h3>
+<p>Открываем все необходимые порты (команда только для ufw):</p>
+<pre><code class="language-bash">sudo ufw limit 22/tcp
+sudo ufw allow 443
+sudo ufw allow 80/tcp
+sudo ufw allow 20808/tcp
+sudo ufw allow 10808/tcp
+sudo ufw allow 8443/tcp
+sudo ufw allow 1080/tcp
+sudo ufw allow 8080/udp
+sudo ufw allow 1234/udp
+sudo ufw allow 500/udp
+sudo ufw enable
+</code></pre>
+<h2 id="редактирование-2"><a class="header" href="#редактирование-2">Редактирование</a></h2>
+<p>Редактируем конфиг:</p>
 <pre><code class="language-bash">sudoedit /etc/sing-box/config.json
 </code></pre>
-<h3 id="4-вставьте-если-тут-уже-что-то-было-удалите"><a class="header" href="#4-вставьте-если-тут-уже-что-то-было-удалите">4. Вставьте (если тут уже что-то было удалите):</a></h3>
-<pre><code class="language-jsonc">{
+<p>Вставьте (если тут уже что-то было удалите):</p>
+<pre><code class="language-json">{
   "log": {
     "level": "warn"
   },
@@ -506,37 +522,27 @@ sing-box generate rand --hex 8 # Пароль для ShadowTLS
   ]
 }
 </code></pre>
-<p>Замените example.com и private_key на ваш домен и приватный ключ.</p>
-<h3 id="5-отредактируйте-systemd-юнит-sing-box"><a class="header" href="#5-отредактируйте-systemd-юнит-sing-box">5. Отредактируйте systemd юнит sing-box:</a></h3>
+<p>Замените name, password, example.com и private_key на cвои.</p>
+<p>Отредактируйте systemd юнит sing-box:</p>
 <pre><code class="language-bash">sudoedit /usr/lib/systemd/system/sing-box.service
 </code></pre>
-<p>Сразу после [Service] добавте строку User=root.</p>
-<h3 id="6-включаем-sing-box"><a class="header" href="#6-включаем-sing-box">6. Включаем sing-box:</a></h3>
+<p>Сразу после [Service] добавьте строку User=root.</p>
+<p>Включаем sing-box:</p>
 <pre><code class="language-bash">sudo systemctl daemon-reload 
 sudo systemctl enable --now sing-box
 </code></pre>
-<h3 id="7-открываем-все-необходимые-порты-команда-только-для-ufw"><a class="header" href="#7-открываем-все-необходимые-порты-команда-только-для-ufw">7. Открываем все необходимые порты (команда только для ufw):</a></h3>
-<pre><code class="language-bash">sudo ufw enable
-sudo ufw allow 443 
-sudo ufw allow 80
-sudo ufw allow 20808
-sudo ufw allow 10808
-sudo ufw allow 1234
-sudo ufw allow 8443
-sudo ufw allow 8080
-sudo ufw allow 1080
-sudo ufw allow 500
-</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="naiveproxy-1"><a href="#naiveproxy-1" class="header">NaiveProxy</a></h1>
-<h3 id="скачиваем-последний-релиз"><a class="header" href="#скачиваем-последний-релиз">Скачиваем последний релиз:</a></h3>
+<h2 id="подготовка-4"><a class="header" href="#подготовка-4">Подготовка</a></h2>
+<p>Скачиваем последний релиз:</p>
 <pre><code class="language-bash">NAIVE_VER=$(curl -sL https://api.github.com/repos/klzgrad/naiveproxy/releases/latest | sed -n 's/.*"tag_name": "\([^"]*\)".*/\1/p' | head -n 1)
 curl -sL https://github.com/klzgrad/naiveproxy/releases/download/${NAIVE_VER}/naiveproxy-${NAIVE_VER}-linux-x64.tar.xz | tar -xJ
 cd naiveproxy-${NAIVE_VER}-linux-x64
 nano config.json
 </code></pre>
-<h3 id="редактируем"><a class="header" href="#редактируем">Редактируем:</a></h3>
-<pre><code class="language-jsonc">{
+<h2 id="редактирование-3"><a class="header" href="#редактирование-3">Редактирование</a></h2>
+<p>Редактируем:</p>
+<pre><code class="language-json">{
   "listen": [
     "socks://127.0.0.1:1080",
     "http://127.0.0.1:8080"
@@ -546,16 +552,18 @@ nano config.json
   "log": ""
 }
 </code></pre>
-<h3 id="запускаем"><a class="header" href="#запускаем">Запускаем:</a></h3>
+<p>Запускаем:</p>
 <pre><code class="language-bash">./naive
 </code></pre>
 <p>Запуск поднимет SOCKS5 прокси на 127.0.0.1:1080 и HTTP на 8080 который можно например, подключить в Telegram и т. д.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="hysteria2-1"><a href="#hysteria2-1" class="header">Hysteria2</a></h1>
-<h3 id="1-устанавливаем-hy2-ссылку-можно-заменить-под-вашу-платформу"><a class="header" href="#1-устанавливаем-hy2-ссылку-можно-заменить-под-вашу-платформу">1. Устанавливаем Hy2 (ссылку можно заменить под вашу платформу):</a></h3>
+<h2 id="подготовка-5"><a class="header" href="#подготовка-5">Подготовка</a></h2>
+<p>Устанавливаем Hy2 (ссылку можно заменить под вашу платформу):</p>
 <pre><code class="language-bash">wget https://download.hysteria.network/app/latest/hysteria-linux-amd64
 </code></pre>
-<h3 id="2-создайте-configyaml-и-вставте"><a class="header" href="#2-создайте-configyaml-и-вставте">2. Создайте config.yaml и вставте:</a></h3>
+<h2 id="редактирование-4"><a class="header" href="#редактирование-4">Редактирование</a></h2>
+<p>Создайте config.yaml и вставте:</p>
 <pre><code class="language-yaml">server: IP:1234 # Замените IP на IP сервера
 
 auth: hy2_pass # Пароль от Hy2
@@ -582,19 +590,21 @@ http:
 
 lazy: true
 </code></pre>
-<h3 id="3-запустите"><a class="header" href="#3-запустите">3. Запустите:</a></h3>
+<p>Запустите:</p>
 <pre><code class="language-bash">chmod +x ./hysteria-linux-amd64
 ./hysteria-linux-amd64
 </code></pre>
 <p>Запуск поднимет SOCKS5 прокси на 2080 порту и HTTP на 3128.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="sing-box-1"><a href="#sing-box-1" class="header">sing-box</a></h1>
-<h3 id="устанавливаем--и-редактируем-sing-box"><a class="header" href="#устанавливаем--и-редактируем-sing-box">Устанавливаем  и редактируем sing-box:</a></h3>
+<h2 id="подготовка-6"><a class="header" href="#подготовка-6">Подготовка</a></h2>
+<p>Устанавливаем  и редактируем sing-box:</p>
 <pre><code class="language-bash">curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 sudoedit config.jsonc
 </code></pre>
-<h3 id="вставляем-конфиг"><a class="header" href="#вставляем-конфиг">Вставляем конфиг:</a></h3>
-<pre><code class="language-jsonc">{
+<h2 id="редактирование-5"><a class="header" href="#редактирование-5">Редактирование</a></h2>
+<p>Вставляем конфиг:</p>
+<pre><code class="language-json">{
   "$schema": "https://sing-box.sagernet.org/schema.json",
   "log": {
     "level": "debug"
@@ -841,19 +851,19 @@ sudoedit config.jsonc
 <li>username, password, uuid, short_id на теже самые что и на сервере.</li>
 <li>example.com на ваш домен.</li>
 </ul>
-<h3 id="запускаем-1"><a class="header" href="#запускаем-1">Запускаем:</a></h3>
+<p>Запускаем:</p>
 <pre><code class="language-bash">sudo sing-box run -c ./config.jsonc
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="альтернативные-клиенты"><a class="header" href="#альтернативные-клиенты">Альтернативные клиенты:</a></h1>
-<p>На Windows и Linux: <a href="https://throneproj.github.io/ru/">Throne</a>, <a href="https://github.com/qr243vbi/nekobox">NekoBox</a> и <a href="https://github.com/SagerNet/sing-box-for-desktop">Sing-box-For-Desktop</a>.</p>
-<p>На Android: <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid">NekoBox For Android</a>.</p>
+<h1 id="установка-на-android"><a class="header" href="#установка-на-android">Установка на Android</a></h1>
+<p>Скачиваем .apk файл с последнего <a href="https://github.com/SagerNet/sing-box/releases">пре-релиза</a> и устанавливаем. Перекидываем конфиг на телефон и заходим в sing-box. Нажимаем на + и выбираем “Импорт из файла”. Импортируем конфиг и подключаемся.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="как-менять-протоколы"><a class="header" href="#как-менять-протоколы">Как менять протоколы:</a></h1>
+<h1 id="как-менять-протоколы"><a class="header" href="#как-менять-протоколы">Как менять протоколы</a></h1>
 <p>В selector поменяйте значение default на тег какого либо из протоколов (они перечислены блоком выше).</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="установка-на-android"><a class="header" href="#установка-на-android">Установка на Android:</a></h1>
-<p>Скачиваем .apk файл с последнего <a href="https://github.com/SagerNet/sing-box/releases">пре-релиза</a> и устанавливаем. Перекидываем конфиг на телефон и заходим в sing-box. Нажимаем на + и выбираем “Импорт из файла”. Импортируем конфиг и подключаемся.</p>
+<h1 id="альтернативные-клиенты"><a class="header" href="#альтернативные-клиенты">Альтернативные клиенты</a></h1>
+<p>На Windows и Linux: <a href="https://throneproj.github.io/ru/">Throne</a>, <a href="https://github.com/qr243vbi/nekobox">NekoBox</a> и <a href="https://github.com/SagerNet/sing-box-for-desktop">Sing-box-For-Desktop</a>.</p>
+<p>На Android: <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid">NekoBox For Android</a>.</p>
 
                     </main>
 
