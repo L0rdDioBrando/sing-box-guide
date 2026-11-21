@@ -31,7 +31,7 @@ sudoedit /etc/caddy/Caddyfile
 ```
 
 Вставляем такое содержимое (замените example.com, email, user и pass на ваши):
-```caddyfile
+```apache
 {
   order forward_proxy before file_server
   log {
@@ -58,7 +58,7 @@ sudoedit /etc/caddy/Caddyfile
 ```
 
 Создаём systemd юнит для автозагрузки caddy:
-```bash
+```ini
 sudo touch /etc/systemd/system/caddy.service 
 sudo cat <<EOF > /etc/systemd/system/caddy.service
 [Unit]
