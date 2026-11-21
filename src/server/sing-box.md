@@ -44,7 +44,7 @@ sudoedit /etc/sing-box/config.json
 ```
 
 Вставьте (если тут уже что-то было удалите):
-```jsonc
+```json
 {
   "log": {
     "level": "warn"
@@ -190,13 +190,13 @@ sudoedit /etc/sing-box/config.json
   ]
 }
 ```
-Замените example.com и private_key на ваш домен и приватный ключ.
+Замените name, password, example.com и private_key на cвои.
 
 Отредактируйте systemd юнит sing-box:
 ```bash
 sudoedit /usr/lib/systemd/system/sing-box.service
 ```
-Сразу после [Service] добавте строку User=root.
+Сразу после [Service] добавьте строку User=root.
 
 Включаем sing-box:
 ```bash
