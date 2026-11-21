@@ -6,7 +6,7 @@ sudoedit config.jsonc
 ```
 ## Редактирование
 Вставляем конфиг:
-```jsonc
+```json
 {
   "$schema": "https://sing-box.sagernet.org/schema.json",
   "log": {

@@ -9,7 +9,7 @@ nano config.json
 
 ## Редактирование
 Редактируем:
-```jsonc
+```json
 {
   "listen": [
     "socks://127.0.0.1:1080",
