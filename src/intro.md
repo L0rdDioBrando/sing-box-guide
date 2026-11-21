@@ -16,6 +16,7 @@
   - [Shadowsocks](https://github.com/shadowsocks/shadowsocks-rust)+[ShadowTLS](https://github.com/ihciah/shadow-tls)
 
   - [MASQUE](https://datatracker.ietf.org/doc/html/rfc9484)
+
 Требуется VPS с дистрибутивом на базе systemd (например Debian).
 
 ## Подготовка
