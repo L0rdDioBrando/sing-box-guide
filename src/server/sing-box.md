@@ -24,16 +24,17 @@ sing-box generate rand --hex 8 # Пароль для ShadowTLS
 
 Открываем все необходимые порты (команда только для ufw):
 ```bash
+sudo ufw limit 22/tcp
+sudo ufw allow 443
+sudo ufw allow 80/tcp
+sudo ufw allow 20808/tcp
+sudo ufw allow 10808/tcp
+sudo ufw allow 8443/tcp
+sudo ufw allow 1080/tcp
+sudo ufw allow 8080/udp
+sudo ufw allow 1234/udp
+sudo ufw allow 500/udp
 sudo ufw enable
-sudo ufw allow 443 
-sudo ufw allow 80
-sudo ufw allow 20808
-sudo ufw allow 10808
-sudo ufw allow 1234
-sudo ufw allow 8443
-sudo ufw allow 8080
-sudo ufw allow 1080
-sudo ufw allow 500
 ```
 
 ## Редактирование
