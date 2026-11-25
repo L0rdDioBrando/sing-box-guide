@@ -26,3 +26,32 @@ nano config.json
 ./naive
 ```
 Запуск поднимет SOCKS5 прокси на 127.0.0.1:1080 и HTTP на 8080 который можно например, подключить в Telegram и т. д.
+
+## Опционально
+Можно создать systemd юнит для автозапуска NaiveProxy(если у вас systemd):
+```bash
+mkdir -p ~/.config/systemd/user/
+nano ~/.config/systemd/user/naive.service
+```
+
+Вставьте:
+```ini
+[Unit]
+Description=NaiveProxy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/path/to/naive /path/to/config.json
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+```
+
+Включаем сервис в автозагрузку:
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now naive.service
+```
